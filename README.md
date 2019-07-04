@@ -18,7 +18,7 @@ Please cite the following paper if you feel this repository useful.
                François Brémond and
                Jefersson A. dos Santos and
                William Robson Schwartz},
-  title     = {A New Representation of Skeleton Joint Sequences Based on Motion Information for 3D Action Recognition},
+  title     = {SkeleMotion: A New Representation of Skeleton Joint Sequences Based on Motion Information for 3D Action Recognition},
   booktitle   = {IEEE International Conference on Advanced Video and Signal-based Surveillance (AVSS)},
   year      = {2019},
 }
