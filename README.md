@@ -12,8 +12,7 @@ Carlos Caetano, Jessica Sena, François Brémond, Jefersson A. dos Santos, and W
 Please cite the following paper if you feel this repository useful.
 ```
 @inproceedings{Caetano:AVSS:2019,
-  author    = {Limin Wang and
-               Carlos Caetano and
+  author    = {Carlos Caetano and
                Jessica Sena and
                François Brémond and
                Jefersson A. dos Santos and
