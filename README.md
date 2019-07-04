@@ -1,6 +1,6 @@
 # Skeleton Images Representation (SkeleMotion)
 
-This repository holds the skeleton image representation codes for the paper
+This repository will hold the skeleton image representation codes for the paper
  
 > 
 **SkeleMotion: A New Representation of Skeleton Joint Sequences Based on Motion Information for 3D Action Recognition**,
