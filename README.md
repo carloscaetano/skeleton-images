@@ -9,6 +9,24 @@ Carlos Caetano, Jessica Sena, François Brémond, Jefersson A. dos Santos, and W
 >
 [[Arxiv Preprint](https://arxiv.org/abs/1907.13025)]
 
+----
+# Usage Guide
+
+## Code & Data Preparation
+
+### Get the code
+[[back to top](#skeleton-images)]
+
+Use git to clone this repository
+```
+git clone --recursive https://github.com/carloscaetano/skeleton-images
+```
+
+### Get the videos
+[[back to top](#skeleton-images)]
+
+We experimented our skeleton images representation on two large-scale 3D action recognition datasets: [NTURGB+D 60][nturgb-d60] and [NTURGB+D 120][nturgb-d120]. For more information about accessing the "NTU RGB+D" and "NTU RGB+D 120" datasets, go to [ROSE website][rose].
+
 ## Citation
 Please cite the following paper if you feel this repository useful.
 ```
@@ -30,5 +48,6 @@ For any question, please contact
 Carlos Caetano: carlos.caetano@dcc.ufmg.br
 ```
 
-[NTURGB-D60]:https://github.com/shahroudy/NTURGB-D
-[NTURGB-D120]:https://github.com/shahroudy/NTURGB-D
+[nturgb-d60]:https://github.com/shahroudy/NTURGB-D
+[nturgb-d120]:https://github.com/shahroudy/NTURGB-D
+[rose]:http://rose1.ntu.edu.sg/Datasets/actionRecognition.asp
