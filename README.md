@@ -9,6 +9,16 @@ Carlos Caetano, Jessica Sena, François Brémond, Jefersson A. dos Santos, and W
 >
 [[Arxiv Preprint](https://arxiv.org/abs/1907.13025)]
 
+# Contents
+* [Usage Guide](#usage-guide)
+  * [Prerequisites](#prerequisites)
+  * [Code & Data Preparation](#code--data-preparation)
+    * [Get the code](#get-the-code)
+    * [Get the Depth Maps](#get-the-depth-maps)
+* [Other Info](#other-info)
+  * [Citation](#citation)
+  * [Contact](#contact)
+
 ----
 # Usage Guide
 
@@ -29,6 +39,9 @@ We experimented our skeleton images representation on two large-scale 3D action 
 
 ### Usage
 [[back to top](#skeleton-images-representation-SkeleMotion)]
+
+# Other Info
+[[back to top](#skeleton-images-representation-SkeleMotion))]
 
 ## Citation
 Please cite the following paper if you feel this repository useful.
