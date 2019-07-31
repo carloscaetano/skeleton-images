@@ -30,4 +30,5 @@ For any question, please contact
 Carlos Caetano: carlos.caetano@dcc.ufmg.br
 ```
 
-[NTURGB-D 60 and 120]:https://github.com/shahroudy/NTURGB-D
+[NTURGB-D60]:https://github.com/shahroudy/NTURGB-D
+[NTURGB-D120]:https://github.com/shahroudy/NTURGB-D
