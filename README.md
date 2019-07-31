@@ -22,10 +22,13 @@ Use git to clone this repository
 git clone --recursive https://github.com/carloscaetano/skeleton-images
 ```
 
-### Get the videos
+### Get the Depth Maps
 [[back to top](#skeleton-images)]
 
 We experimented our skeleton images representation on two large-scale 3D action recognition datasets: [NTURGB+D 60][nturgb-d60] and [NTURGB+D 120][nturgb-d120]. For more information about accessing the "NTU RGB+D" and "NTU RGB+D 120" datasets, go to [ROSE website][rose].
+
+### Usage
+[[back to top](#skeleton-images)]
 
 ## Citation
 Please cite the following paper if you feel this repository useful.
