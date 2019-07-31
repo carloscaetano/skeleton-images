@@ -22,6 +22,16 @@ Carlos Caetano, Jessica Sena, François Brémond, Jefersson A. dos Santos, and W
 ----
 # Usage Guide
 
+## Prerequisites
+[[back to top](#skeleton-images-representation-SkeleMotion)]
+
+The main dependencies to run the code are
+
+- [OpenCV][opencv]
+- [NumPy][numpy]
+
+The codebase is written in Python 3.6. We recommend the [Anaconda][anaconda] Python distribution.
+
 ## Code & Data Preparation
 
 ### Get the code
@@ -67,3 +77,6 @@ Carlos Caetano: carlos.caetano@dcc.ufmg.br
 [nturgb-d60]:https://github.com/shahroudy/NTURGB-D
 [nturgb-d120]:https://github.com/shahroudy/NTURGB-D
 [rose]:http://rose1.ntu.edu.sg/Datasets/actionRecognition.asp
+[anaconda]:https://www.continuum.io/downloads
+[opencv]:https://opencv.org/
+[numpy]:https://numpy.org/
