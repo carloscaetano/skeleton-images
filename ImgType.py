@@ -373,4 +373,3 @@ class_img_types: Dict[int, Type[Union[CaetanoMagnitude, CaetanoOrientation, Caet
     2: CaetanoOrientation,
     3: CaetanoTSRJI
 }
-
