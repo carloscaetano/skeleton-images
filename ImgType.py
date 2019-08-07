@@ -14,6 +14,26 @@ class ImgType(object):
                                      8, 9, 10, 11, 23, 24, 23, 11, 10, 9, 8, 20, 1, 0, 12, 13,
                                      14, 15, 14, 13, 12, 0, 16, 17, 18, 19, 18, 17, 16, 0, 1]
 
+    reference_joint_4_NTU = [1, 4, 20, 4, 2, 4, 3, 4, 2, 4, 20, 4, 5, 4, 6, 4, 7, 4, 21, 4, 22, 4, 21, 4,
+                             7, 4, 6, 4, 5, 4, 20, 4, 8, 4, 9, 4, 10, 4, 11, 4, 23, 4, 24, 4, 23, 4, 11,
+                             4, 10, 4, 9, 4, 8, 4, 20, 4, 1, 4, 0, 4, 12, 4, 13, 4, 14, 4, 15, 4, 14, 4,
+                             13, 4, 12, 4, 0, 4, 16, 4, 17, 4, 18, 4, 19, 4, 18, 4, 17, 4, 16, 4, 0, 4, 1]
+
+    reference_joint_8_NTU = [1, 8, 20, 8, 2, 8, 3, 8, 2, 8, 20, 8, 4, 8, 5, 8, 6, 8, 7, 8, 21, 8, 22, 8,
+                             21, 8, 7, 8, 6, 8, 5, 8, 4, 8, 20, 8, 9, 8, 10, 8, 11, 8, 23, 8, 24, 8, 23,
+                             8, 11, 8, 10, 8, 9, 8, 20, 8, 1, 8, 0, 8, 12, 8, 13, 8, 14, 8, 15, 8, 14, 8,
+                             13, 8, 12, 8, 0, 8, 16, 8, 17, 8, 18, 8, 19, 8, 18, 8, 17, 8, 16, 8, 0, 8, 1]
+
+    reference_joint_12_NTU = [1, 12, 20, 12, 2, 12, 3, 12, 2, 12, 20, 12, 4, 12, 5, 12, 6, 12, 7, 12, 21, 12, 22, 12,
+                              21, 12, 7, 12, 6, 12, 5, 12, 4, 12, 20, 12, 8, 12, 9, 12, 10, 12, 11, 12, 23, 12, 24,
+                              12, 23, 12, 11, 12, 10, 12, 9, 12, 8, 12, 20, 12, 1, 12, 0, 12, 13, 12, 14, 12, 15, 12,
+                              14, 12, 13, 12, 0, 12, 16, 12, 17, 12, 18, 12, 19, 12, 18, 12, 17, 12, 16, 12, 0, 12, 1]
+
+    reference_joint_16_NTU = [1, 16, 20, 16, 2, 16, 3, 16, 2, 16, 20, 16, 4, 16, 5, 16, 6, 16, 7, 16, 21, 16, 22, 16,
+                              21, 16, 7, 16, 6, 16, 5, 16, 4, 16, 20, 16, 8, 16, 9, 16, 10, 16, 11, 16, 23, 16, 24,
+                              16, 23, 16, 11, 16, 10, 16, 9, 16, 8, 16, 20, 16, 1, 16, 0, 16, 12, 16, 13, 16, 14, 16,
+                              15, 16, 14, 16, 13, 16, 12, 16, 0, 16, 17, 16, 18, 16, 19, 16, 18, 16, 17, 16, 0, 16, 1]
+
     def __init__(self) -> None:
         self.temporal_scale = [1]
         self.kinect_data = kd.KinectData()
@@ -142,6 +162,7 @@ class ImgType(object):
         self.temporal_scale = temporal_scale
 
 
+#SkeleMotion - AVSS 2019
 class CaetanoMagnitude(ImgType):
     def __init__(self) -> None:
         super().__init__('CaetanoMagnitude')
@@ -195,6 +216,7 @@ class CaetanoMagnitude(ImgType):
             return extraction
 
 
+#SkeleMotion - AVSS 2019
 class CaetanoOrientation(ImgType):
     x: int = 0
     y: int = 1
@@ -210,6 +232,7 @@ class CaetanoOrientation(ImgType):
         self.num_imgs = 1
         self.channels = len(self.temporal_scale)
 
+    @staticmethod
     def compute_joint_orientation(self, diff_joint: np.array, fir_axis: int, sec_axis: int) -> float:
         ret = math.atan2(diff_joint[fir_axis], diff_joint[sec_axis]) * 180 / math.pi
         ret = self.normalize(ret, -180.0, 180.0, 1.0, -1.0)
@@ -272,8 +295,82 @@ class CaetanoOrientation(ImgType):
             return extraction
 
 
-class_img_types: Dict[int, Type[Union[CaetanoMagnitude, CaetanoOrientation]]] = {
+#Tree Structure Reference Joints Image (TSRJI) - SIBGRAPI 2019
+class CaetanoTSRJI(ImgType):
+    stack_images = False
+    ref_joints = ['4', '8', '12', '16']
+
+    def __init__(self) -> None:
+        super().__init__('CaetanoTSRJI')
+        self.width_resized = 100
+        self.height_resized = len(self.reference_joint_4_NTU)
+        self.num_imgs = 4
+
+    def generate_file_name(self, skl_file: str, k_body: int, r_joint: int) -> str:
+        f_name = os.path.basename(skl_file)
+        file_prefix = f_name.split('.')[0] + '_'
+        file_suffix = '.' + f_name.split('.')[1]
+        f_save = file_prefix + str(k_body + 1) + '_' + self.ref_joints[r_joint] + '_' + self.img_type + file_suffix
+        return f_save
+
+    def process_skl_file(self, skl_file: str, path_to_save: str) -> str:
+        extraction = ''
+        try:
+            self.set_channels(3)  # varies according to method
+            self.height_resized = len(self.reference_joint_4_NTU)
+            self.kinect_data.read_data(skl_file)
+            self.set_height(len(self.reference_joint_4_NTU))
+            self.set_width(self.kinect_data.n_frames)
+            list_path_to_save = []
+            for k_body in range(self.kinect_data.n_bodies):
+                imgs = [np.zeros((self.height, self.width, self.channels), np.float) for _ in range(self.num_imgs)]
+                for i_frames in range(self.kinect_data.n_frames):
+                    if self.kinect_data.kinect_blocks[i_frames].n_bodies > k_body:
+                        for j_pos in range(len(self.reference_joint_4_NTU)):
+
+                            j_joints = self.reference_joint_4_NTU[j_pos]
+                            kj = self.kinect_data.kinect_blocks[i_frames].body_list[k_body].joint_data[j_joints]
+                            imgs[0][j_pos, i_frames] = (kj.x_joint, kj.y_joint, kj.z_joint)
+
+                            j_joints = self.reference_joint_8_NTU[j_pos]
+                            kj = self.kinect_data.kinect_blocks[i_frames].body_list[k_body].joint_data[j_joints]
+                            imgs[1][j_pos, i_frames] = (kj.x_joint, kj.y_joint, kj.z_joint)
+
+                            j_joints = self.reference_joint_12_NTU[j_pos]
+                            kj = self.kinect_data.kinect_blocks[i_frames].body_list[k_body].joint_data[j_joints]
+                            imgs[2][j_pos, i_frames] = (kj.x_joint, kj.y_joint, kj.z_joint)
+
+                            j_joints = self.reference_joint_16_NTU[j_pos]
+                            kj = self.kinect_data.kinect_blocks[i_frames].body_list[k_body].joint_data[j_joints]
+                            imgs[3][j_pos, i_frames] = (kj.x_joint, kj.y_joint, kj.z_joint)
+
+                if CaetanoTSRJI.stack_images:
+                    stacked_img = np.dstack((imgs[0], imgs[1], imgs[2], imgs[3]))
+                    self.img_list.append(cv2.resize(stacked_img, (self.width_resized, self.height_resized)))
+                    f_save = self.generate_file_name(skl_file, k_body)
+                    list_path_to_save.append(os.path.join(path_to_save, f_save))
+                else:
+                    for n in range(self.num_imgs):
+                        self.img_list.append(cv2.resize(imgs[n], (self.width_resized, self.height_resized)))
+                        f_save = self.generate_file_name(skl_file, k_body, n)
+                        list_path_to_save.append(os.path.join(path_to_save, f_save))
+                del imgs
+
+            self.save_img_list(list_path_to_save)
+            extraction = 'OK\t' + skl_file
+            print(extraction)
+        except Exception as exception:
+            extraction = 'ERROR\t' + skl_file + ' ' + str(exception)
+            print(extraction)
+        finally:
+            del list_path_to_save
+            self.img_list.clear()
+            return extraction
+
+
+class_img_types: Dict[int, Type[Union[CaetanoMagnitude, CaetanoOrientation, CaetanoTSRJI]]] = {
     1: CaetanoMagnitude,
-    2: CaetanoOrientation
+    2: CaetanoOrientation,
+    3: CaetanoTSRJI
 }
 

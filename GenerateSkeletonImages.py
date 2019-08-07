@@ -8,9 +8,10 @@ from typing import List
 
 def get_arguments(parser: argparse.ArgumentParser) -> argparse.Namespace:
     parser.add_argument('--data_path', type=str, help='directory containing the skeleton data')
-    parser.add_argument('--img_type', type=int, choices=[1, 2], help='Image type to compute'
-                                                                   '1 - CaetanoMagnitude'
-                                                                   '2 - CaetanoOrientation', default=1)
+    parser.add_argument('--img_type', type=int, choices=[1, 2, 3], help='Image type to compute'
+                                                                   '1 - CaetanoMagnitude (SkeleMotion - AVSS2019)'
+                                                                   '2 - CaetanoOrientation (SkeleMotion - AVSS2019)'
+                                                                   '3 - CaetanoTSRJI (TSRJI - SIBGRAPI2019)', default=1)
     parser.add_argument('--temp_dist', nargs='+', type=int, help='Temporal distance between frames', default=1)
     parser.add_argument('--path_to_save', type=str, help='directory to save the skeleton images')
     args = parser.parse_args()
