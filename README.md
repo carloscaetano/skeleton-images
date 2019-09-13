@@ -14,7 +14,7 @@ Carlos Caetano, Jessica Sena, François Brémond, Jefersson A. dos Santos, and W
 Carlos Caetano, François Brémond and William Robson Schwartz,
 *SIBGRAPI 2019*, Rio de Janeiro, Brazil.
 >
-
+[[Arxiv Preprint](https://arxiv.org/abs/1909.05704)]
 
 # Contents
 * [Usage Guide](#usage-guide)
