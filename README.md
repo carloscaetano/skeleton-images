@@ -66,11 +66,11 @@ To extract the skeleton images on NTU dataset, run the GenerateSkeletonImages.py
 - [--temp_dist] Temporal distance between frames
 - [--path_to_save] Directory to save the extracted skeleton images
 
+#### Example
+To extract the Magnitude skeleton image, with temporal distance = 10, from the NTU dataset located in the directory ./nturgb+d_skeletons/ and save the skeleton images to the folder ./CaetanoMagnitude, you can run
 ```
 python GenerateSkeletonImages.py --data_path ./nturgb+d_skeletons/ --img_type 1 --temp_dist 10 --path_to_save ./CaetanoMagnitude
 ```
-
-
 
 # Other Info
 [[back to top](#skeleton-images-representation-SkeleMotion-and-SRJI))]
