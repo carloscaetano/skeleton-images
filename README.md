@@ -60,9 +60,9 @@ We experimented our skeleton images representation on two large-scale 3D action 
 To extract the skeleton images on NTU dataset, run the GenerateSkeletonImages.py. It has four arguments:
 - [--data_path] Directory containing the NTU skeleton data
 - [--img_type] Image type to compute:
-  - [1] CaetanoMagnitude (SkeleMotion - AVSS2019);
-  - [2] CaetanoOrientation (SkeleMotion - AVSS2019);
-  - [3] CaetanoTSRJI (TSRJI - SIBGRAPI2019)
+  - 1 - CaetanoMagnitude (SkeleMotion - AVSS2019);
+  - 2 - CaetanoOrientation (SkeleMotion - AVSS2019);
+  - 3 - CaetanoTSRJI (TSRJI - SIBGRAPI2019)
 - [--temp_dist] Temporal distance between frames
 - [--path_to_save] Directory to save the extracted skeleton images
 
