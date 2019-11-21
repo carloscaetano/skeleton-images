@@ -21,7 +21,7 @@ Carlos Caetano, François Brémond and William Robson Schwartz,
   * [Prerequisites](#prerequisites)
   * [Code & Data Preparation](#code--data-preparation)
     * [Get the code](#get-the-code)
-    * [Get the Depth Maps](#get-the-depth-maps)
+    * [Get the Skeleton Data](#get-the-skeleton-data)
     * [Usage](#usage)
 * [Other Info](#other-info)
   * [Citation](#citation)
@@ -50,7 +50,7 @@ Use git to clone this repository
 git clone --recursive https://github.com/carloscaetano/skeleton-images
 ```
 
-### Get the Depth Maps
+### Get the Skeleton Data
 [[back to top](#skeleton-images-representation-SkeleMotion-and-SRJI)]
 
 We experimented our skeleton images representation on two large-scale 3D action recognition datasets: [NTURGB+D 60][nturgb-d60] and [NTURGB+D 120][nturgb-d120]. For more information about accessing the "NTU RGB+D" and "NTU RGB+D 120" datasets, go to [ROSE website][rose].
