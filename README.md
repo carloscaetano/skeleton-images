@@ -22,6 +22,7 @@ Carlos Caetano, François Brémond and William Robson Schwartz,
   * [Code & Data Preparation](#code--data-preparation)
     * [Get the code](#get-the-code)
     * [Get the Depth Maps](#get-the-depth-maps)
+    * [Usage](#usage)
 * [Other Info](#other-info)
   * [Citation](#citation)
   * [Contact](#contact)
