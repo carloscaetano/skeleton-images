@@ -57,7 +57,17 @@ We experimented our skeleton images representation on two large-scale 3D action 
 ### Usage
 [[back to top](#skeleton-images-representation-SkeleMotion-and-SRJI)]
 
-TODO...
+To extract the skeleton images on NTU dataset, run the GenerateSkeletonImages.py. It has four arguments:
+- [--data_path] Directory containing the NTU skeleton data
+- [--img_type] Image type to compute: (1) - CaetanoMagnitude (SkeleMotion - AVSS2019); (2) - CaetanoOrientation (SkeleMotion - AVSS2019); (3) - CaetanoTSRJI (TSRJI - SIBGRAPI2019)
+- [--temp_dist] Temporal distance between frames
+- [--path_to_save] Directory to save the extracted skeleton images
+
+```
+python GenerateSkeletonImages.py --data_path ./nturgb+d_skeletons/ --img_type 1 --temp_dist 10 --path_to_save ./CaetanoMagnitude
+```
+
+
 
 # Other Info
 [[back to top](#skeleton-images-representation-SkeleMotion-and-SRJI))]
