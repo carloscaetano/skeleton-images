@@ -233,9 +233,9 @@ class CaetanoOrientation(ImgType):
         self.channels = len(self.temporal_scale)
 
     @staticmethod
-    def compute_joint_orientation(self, diff_joint: np.array, fir_axis: int, sec_axis: int) -> float:
+    def compute_joint_orientation(diff_joint: np.array, fir_axis: int, sec_axis: int) -> float:
         ret = math.atan2(diff_joint[fir_axis], diff_joint[sec_axis]) * 180 / math.pi
-        ret = self.normalize(ret, -180.0, 180.0, 1.0, -1.0)
+        ret = CaetanoOrientation.normalize(ret, -180.0, 180.0, 1.0, -1.0)
         return ret
 
     def process_skl_file(self, skl_file: str, path_to_save: str) -> str:
@@ -268,13 +268,13 @@ class CaetanoOrientation(ImgType):
                                         ori_yz_value = CaetanoOrientation.diff_ori_val
                                         ori_zx_value = CaetanoOrientation.diff_ori_val
                                     else:
-                                        ori_yx_value = self.compute_joint_orientation(diff_joint, self.y, self.x)
-                                        ori_yz_value = self.compute_joint_orientation(diff_joint, self.y, self.z)
-                                        ori_zx_value = self.compute_joint_orientation(diff_joint, self.z, self.x)
+                                        ori_yx_value = CaetanoOrientation.compute_joint_orientation(diff_joint, self.y, self.x)
+                                        ori_yz_value = CaetanoOrientation.compute_joint_orientation(diff_joint, self.y, self.z)
+                                        ori_zx_value = CaetanoOrientation.compute_joint_orientation(diff_joint, self.z, self.x)
                                 else:
-                                    ori_yx_value = self.compute_joint_orientation(diff_joint, self.y, self.x)
-                                    ori_yz_value = self.compute_joint_orientation(diff_joint, self.y, self.z)
-                                    ori_zx_value = self.compute_joint_orientation(diff_joint, self.z, self.x)
+                                    ori_yx_value = CaetanoOrientation.compute_joint_orientation(diff_joint, self.y, self.x)
+                                    ori_yz_value = CaetanoOrientation.compute_joint_orientation(diff_joint, self.y, self.z)
+                                    ori_zx_value = CaetanoOrientation.compute_joint_orientation(diff_joint, self.z, self.x)
 
                                 ori_values.append(ori_yx_value)
                                 ori_values.append(ori_yz_value)
